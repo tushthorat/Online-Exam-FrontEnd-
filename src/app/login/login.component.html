@@ -1,0 +1,19 @@
+<body>
+    
+    <form>
+            
+        <input type="text" name="username" placeholder="Enter username" [(ngModel)]="user.username"><br><br>
+        
+        <input  type="password" name="password" placeholder="Enter password" [(ngModel)]="user.password"><br><br>
+        
+
+    <br><br>
+    
+        <input type=button value=login (click)="validate()" class="btn">
+   
+        
+    </form>
+    
+    {{message}}
+
+    </body>

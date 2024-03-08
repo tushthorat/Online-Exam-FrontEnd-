@@ -21,7 +21,7 @@ export class LoginComponent {
       validate(){
         this.loginservice.ValidateUser(this.user).subscribe(answer=>{
           if(answer){
-            this.router.navigate(['welcome'])
+            this.router.navigate(['question']);
             sessionStorage.setItem("username",this.user.username);
           }else{
          

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,20 @@ import { Injectable } from '@angular/core';
 export class QuestionService {
 
   constructor(private httpclient:HttpClient) {}
+
+  getFirstQuestion(subject:string):Observable<Question>
+  {
+    // ArrayList<String> al =new ArrayList<String>();
+    
+    return this.httpclient.get<Question>("http://localhost:8080/getFirstQuestion/"+subject);
+
+    // http://localhost:8080/getFirstQuestion will give JSON string having first Question details .
+    // Angular will convert this JSON string into Question class's object .
+   
+   // [ () Question class object  subscribe() ] Observable object 
+   // [ ()Employee class object  get() ] ArrayList class object
+  }
+
 }
 
 

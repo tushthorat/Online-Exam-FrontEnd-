@@ -18,13 +18,36 @@ export class QuestionComponent implements OnInit{
   submittedAnswer:string='';
     question:Question=new Question(0,'','','','','','','');
     answer:Answer=new Answer(0,'','','');
+    remainingtime=121;
+    durationMessage="";
+
     constructor(private questionService:QuestionService,private router:Router){
              this.username=sessionStorage.getItem("username");
              this.subject=sessionStorage.getItem("subject");
     }
   ngOnInit(): void {
-       this.questionService.getFirstQuestion(this.subject).subscribe(questionfromresponse=>this.question=questionfromresponse);
+      
        
+       setInterval(()=>{
+          this.remainingtime=this.remainingtime-1;
+          
+          if(this.remainingtime==0){
+            this.endexam();
+          }
+
+          let minutes=Math.floor(this.remainingtime/60);
+          let seconds=Math.floor(this.remainingtime%60);
+          this.durationMessage="Time Remaining :- " + minutes + ":" + seconds;
+
+         },1000);
+          // setInterval(function,delay)
+
+
+          
+          this.questionService.getFirstQuestion(this.subject).subscribe(questionFromResponse=>this.question=questionFromResponse);
+
+          // [ () Question class object subscribe() ] Observable object
+
   }
   nextQuestion()
   {

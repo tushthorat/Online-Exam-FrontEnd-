@@ -29,6 +29,18 @@ export class QuestionService {
   {
     return this.httpclient.get<Question>("http://localhost:8080/previousQuestion");
   }
+  saveAnswer(answer:Answer)
+  {
+    return this.httpclient.post<void>("http://localhost:8080/saveAnswer",answer);
+  }
+  endexam()
+  {
+     return this.httpclient.get<number>("http://localhost:8080/endexam");
+  }
+  getAllAnswers()
+  {
+    return this.httpclient.get<Answer[]>("http://localhost:8080/getAllAnswers");
+  }
 }
 
 

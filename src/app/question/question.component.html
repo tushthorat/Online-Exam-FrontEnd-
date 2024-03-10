@@ -13,16 +13,18 @@
     
     <br><br>
       
-    <input  name="options" type="radio"  [value]="question.op1" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  ><br><br>
-    <input  name="options" type="radio"   [value]="question.op2" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  > <br><br> 
-    <input  name="options" type="radio"  [value]="question.op3" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  ><br><br> 
-    <input  name="options" type="radio"  [value]="question.op4" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  ><br><br>
+    <input  name="options" type="radio" (change)="saveAnswer" [value]="question.op1" [(ngModel)]="submittedAnswer"  ><br><br>
+    <input  name="options" type="radio"   [value]="question.op2" [(ngModel)]="submittedAnswer"   > <br><br> 
+    <input  name="options" type="radio"  [value]="question.op3" [(ngModel)]="submittedAnswer"  ><br><br> 
+    <input  name="options" type="radio"  [value]="question.op4" [(ngModel)]="submittedAnswer" ><br><br>
 
     <input  type="hidden" name="originalAnswer" [(ngModel)]="question.answer"><br><br>
 
     <input type="button" value="next" (click)="nextQuestion()" >
 
     <input type="button" value="previous" (click)="previousQuestion()" >
+
+    <input type="button" value="endexam" (click)="endexam()" >
 
  
 </form>

@@ -21,8 +21,16 @@ export class QuestionService {
    // [ () Question class object  subscribe() ] Observable object 
    // [ ()Employee class object  get() ] ArrayList class object
   }
-
+  nextQuestion()
+  {
+    return this.httpclient.get<Question>("http://localhost:8080/nextQuestion");
+  }
+  previousQuestion()
+  {
+    return this.httpclient.get<Question>("http://localhost:8080/previousQuestion");
+  }
 }
+
 
 
 // {"qno":1,"qtext":"why","op1":"A","op2":"B","op3":"C","op4":"D","answer":"A","subject":"java"}

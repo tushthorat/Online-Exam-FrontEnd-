@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
       message:any="";
-   
+       subject:any="";
       user:User=new User('','',0,'');
   
 
@@ -22,6 +22,7 @@ export class LoginComponent {
         this.loginservice.ValidateUser(this.user).subscribe(answer=>{
           if(answer){
             this.router.navigate(['question']);
+            sessionStorage.setItem("subject",this.subject);
             sessionStorage.setItem("username",this.user.username);
           }else{
          

@@ -1,1 +1,35 @@
-<p>question works!</p>
+<html>
+
+<body>
+
+
+
+<p>welcome {{username}}</p>
+
+<form name="questionForm">
+    
+    <input type="text"  name="qno" [(ngModel)]="question.qno" ><br><br>
+    <input type="text"   name="qtext" [(ngModel)]="question.qtext"><br><br>
+    
+    <br><br>
+      
+    <input  name="options" type="radio"  [value]="question.op1" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  ><br><br>
+    <input  name="options" type="radio"   [value]="question.op2" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  > <br><br> 
+    <input  name="options" type="radio"  [value]="question.op3" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  ><br><br> 
+    <input  name="options" type="radio"  [value]="question.op4" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel"  ><br><br>
+
+    <input  type="hidden" name="originalAnswer" [(ngModel)]="question.answer"><br><br>
+
+    <input type="button" value="next" (click)="nextQuestion()" >
+
+    <input type="button" value="previous" (click)="previousQuestion()" >
+
+ 
+</form>
+
+
+
+</body>
+
+</html>
+

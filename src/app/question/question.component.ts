@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Answer, Question, QuestionService } from '../question.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './question.component.html',
   styleUrl: './question.component.css'
 })
 export class QuestionComponent implements OnInit{
+
   subject:any='';   
   username:any='';
   submittedAnswer:string='';

@@ -22,6 +22,14 @@ export class ScoreComponent implements OnInit{
   ngOnInit(){
     this.questionService.endexam().subscribe(score=>this.score=score);
   }
+  
+  getColor(submittedAnswer:string,originalAnswer:string)
+  {
+    if(submittedAnswer==originalAnswer)
+      return "green";
+    else
+      return "red";
+  }
    }
     
 

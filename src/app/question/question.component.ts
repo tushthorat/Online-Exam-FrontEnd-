@@ -20,6 +20,8 @@ export class QuestionComponent implements OnInit{
     answer:Answer=new Answer(0,'','','');
     remainingtime=121;
     durationMessage="";
+    allanswers:Answer[]=[];
+    selected=false;
 
     constructor(private questionService:QuestionService,private router:Router){
              this.username=sessionStorage.getItem("username");
@@ -41,9 +43,11 @@ export class QuestionComponent implements OnInit{
 
          },1000);
           // setInterval(function,delay)
+ //updating webpage partially without reloading the webpage ,it is done using ajax
+ //angular use ajax internally for this purpose
 
+ 
 
-          
           this.questionService.getFirstQuestion(this.subject).subscribe(questionFromResponse=>this.question=questionFromResponse);
 
           // [ () Question class object subscribe() ] Observable object
@@ -51,13 +55,13 @@ export class QuestionComponent implements OnInit{
   }
   nextQuestion()
   {
-        
+        this.selected=false; 
         this.questionService.nextQuestion().subscribe(response=>this.question=response) ;
   }
 
   previousQuestion()
   {
-   
+   this.selected=false;
     this.questionService.previousQuestion().subscribe(response=>this.question=response) ;
   }
   saveAnswer()
@@ -72,4 +76,33 @@ export class QuestionComponent implements OnInit{
  endexam(){
     this.router.navigate(['score']);
  }
+
+ compare(currentOption:string)
+  {
+      for(var i=0;i<this.allanswers.length;i++)
+      {
+        var answer=this.allanswers[i];
+
+          if(this.question.qno==answer.qno && answer.submittedAnswer==currentOption)
+          {
+            return "green";
+          }
+      }
+
+      return "red";
+  }
+  compare2(currentOption:string)
+  {
+      for(var i=0;i<this.allanswers.length;i++)
+      {
+          var answer=this.allanswers[i];
+
+          if(this.question.qno==answer.qno && answer.submittedAnswer==currentOption)
+          {
+            return true;
+          }
+      }
+
+      return false;
+  }
 }

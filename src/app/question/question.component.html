@@ -2,6 +2,8 @@
 
 <body>
 
+<img style="position: absolute;top:150px;right:100px" src="assets/Tushar_photo.jpg" width="100px height=100px">
+
 <span style="color:red;position: fixed;top:55px;right:20px">{{durationMessage}}</span>
 
 <p>welcome {{username}}</p>
@@ -13,10 +15,10 @@
     
     <br><br>
       
-    <input  name="options" type="radio" (change)="saveAnswer" [value]="question.op1" [(ngModel)]="submittedAnswer"  ><br><br>
-    <input  name="options" type="radio"   [value]="question.op2" [(ngModel)]="submittedAnswer"   > <br><br> 
-    <input  name="options" type="radio"  [value]="question.op3" [(ngModel)]="submittedAnswer"  ><br><br> 
-    <input  name="options" type="radio"  [value]="question.op4" [(ngModel)]="submittedAnswer" ><br><br>
+    <input  name="options" type="radio"  [checked]="compare2(question.op1)" (change)="saveAnswer()" [value]="question.op1" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel" [(ngModel)]="selected" ><span [style.color]="compare(question.op1)">{{question.op1}}</span><br><br>
+    <input  name="options" type="radio"  [checked]="compare2(question.op2)" (change)="saveAnswer()" [value]="question.op2" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel" [(ngModel)]="selected" ><span [style.color]="compare(question.op2)">{{question.op2}}</span><br><br> 
+    <input  name="options" type="radio"  [checked]="compare2(question.op3)" (change)="saveAnswer()" [value]="question.op3" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel" [(ngModel)]="selected" ><span [style.color]="compare(question.op3)">{{question.op3}}</span><br><br> 
+    <input  name="options" type="radio"  [checked]="compare2(question.op4)" (change)="saveAnswer()" [value]="question.op4" [(ngModel)]="submittedAnswer" class="css-checkbox" name="radioModel" [(ngModel)]="selected" ><span [style.color]="compare(question.op4)">{{question.op4}}</span><br><br>
 
     <input  type="hidden" name="originalAnswer" [(ngModel)]="question.answer"><br><br>
 
@@ -24,9 +26,8 @@
 
     <input type="button" value="previous" (click)="previousQuestion()" >
 
-    <input type="button" value="endexam" (click)="endexam()" >
+    <input type="button" value="endexam" (click)="endexam()" >    
 
- 
 </form>
 
 
@@ -34,4 +35,3 @@
 </body>
 
 </html>
-

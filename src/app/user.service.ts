@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,7 +6,31 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private httpclient:HttpClient) { {
+    
+  } }
+  saveUser(user:User)
+  {
+    return this.httpclient.post<void>("http://localhost:8080/saveUser",user);
+  }
+
+  getAllUsers()
+  {
+    
+   return this.httpclient.get<User[]>("http://localhost:8080/getAllUsers");
+
+    //  [ user[] ] Observable object
+  }
+
+  getUser(username:string)
+  {
+    return  this.httpclient.get<User>("http://localhost:8080/getUser/" + username);
+  }
+
+  deleteUser(username:string)
+  {
+    return  this.httpclient.delete<boolean>("http://localhost:8080/deleteUser/" + username);
+  }
 }
 export class User{
   username:string;
